@@ -1,0 +1,10 @@
+name: SetMaxHealth
+main: com.github.Viduality.SetMaxHealth.SetHealth
+version: 1.0
+author: Viduality
+commands:
+  SetMaxHealth:
+    description: Sets the maximum player health.
+    usage: /SetMaxHealth <Player> <Amount>
+    permissin: SetMaxHealth.*
+    permission-message: You don't have permission!
