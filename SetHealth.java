@@ -36,16 +36,33 @@ public class SetHealth extends JavaPlugin implements CommandExecutor {
             if (args.length == 2) {
                 Player player = getServer().getPlayer(args[0]);
                 if (!(player == null)) {
-                    int Health = Integer.parseInt(args[1]);
-                    if (Health > 0) {
-                        player.setMaxHealth(Double.parseDouble(args[1]));
-                        return true;
+                    if (isInt(args[1])) {
+                        int Health = Integer.parseInt(args[1]);
+                        if (Health <= 100) {
+                            if (Health > 0) {
+                                player.setMaxHealth(Health);
+                                return true;
+                            }sender.sendMessage(ChatColor.RED + "Enter a Health that is over 0!");
+                            return true;
+                        }
                     }
-                    sender.sendMessage(ChatColor.RED + "Enter a Health that is over 0!");
+                    sender.sendMessage(ChatColor.RED + "You have to Enter a number which can be up to 100!");
                     return true;
                 }
+                sender.sendMessage(ChatColor.RED + "Player is not Online!");
+                return true;
             }
         }
         return false;
+    }
+
+
+    public static boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }
